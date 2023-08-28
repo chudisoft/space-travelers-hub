@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
+body {
+  padding: 4%;
+  background-color: #f5f6fa;
+  font-family: 'Bungee Inline', cursive;
+}
+
+a {
+  text-decoration: none;
+}
+
+.app {
+  margin: unset;
+}
+
+.row {
+  display: flex;
+  gap: 1em;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.container {
+  padding: 4%;
+}
+
+#root {
+  margin: 0;
+  padding: 0 0 8%;
+  border-radius: 4px;
+  box-shadow: 0 0 60px 0 rgba(0, 0, 0, 0.05);
+  background-color: #fafafa;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.p-4 {
+  padding: 4%;
+}
+
+.col-md-12 {
+  width: 100%;
+}
