@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { logo } from "../../assets";
-import links from "../../constants/constants";
+import { links } from "../../constants/constants";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 
 const Navbar = () => {
@@ -18,13 +18,13 @@ const Navbar = () => {
     linkRef.current.classList.remove("active");
     menuRef.current.children[0].classList.remove("closed");
     menuRef.current.children[1].classList.remove("active");
-  }
+  };
 
   const handleClicked = () => {
     linkRef.current.classList.remove("active");
     menuRef.current.children[0].classList.remove("closed");
     menuRef.current.children[1].classList.remove("active");
-  }
+  };
 
   return (
     <header className="navbar__header">
@@ -34,19 +34,22 @@ const Navbar = () => {
       </div>
       <nav className="navbar__links" ref={linkRef}>
         <ul>
-          {links.map((link) => (
-            <NavLink
-              onClick={handleClicked}
-              key={link.name}
-              to={link.path}
-              className="link"
-              style={({ isActive }) => {
-                if (isActive) {
-                  return { textDecoration: "underline" };
-                }
-              }}>
-              {link.name}
-            </NavLink>
+          {links.map((link, idx) => (
+            <div key={link.name} style={{display: 'flex', gap: '0.5rem'}}>
+              {link.name === "My Profile" && <hr />}
+              <NavLink
+                onClick={handleClicked}
+                key={link.name}
+                to={link.path}
+                className="link"
+                style={({ isActive }) => {
+                  if (isActive) {
+                    return { textDecoration: "underline" };
+                  }
+                }}>
+                {link.name}
+              </NavLink>
+            </div>
           ))}
         </ul>
       </nav>
