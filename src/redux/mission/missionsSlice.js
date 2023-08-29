@@ -13,22 +13,6 @@ const fetchMissions = createAsyncThunk(
   },
 );
 
-const addMission = createAsyncThunk(
-  'missions/addMission',
-  async (mission) => {
-    const response = await axios.post(`${baseApiUrl}missions`, mission);
-    return response.data === 'Created' ? mission : null;
-  },
-);
-
-const removeMission = createAsyncThunk(
-  'missions/removeMission',
-  async (mission) => {
-    const response = await axios.delete(`${baseApiUrl}missions/${mission.item_id}`);
-    return response.data === 'The mission was deleted successfully!' ? mission : null;
-  },
-);
-
 const initialState = {
   missions: [],
   error: '',
@@ -38,7 +22,34 @@ const initialState = {
 export const missionsSlice = createSlice({
   name: 'missions',
   initialState,
-  reducers: {},
+  reducers: {
+    joinMission: (state, action) => {
+      const missionIndex = state.missions.findIndex(
+        (m) => m.mission_id === action.payload.mission_id,
+      );
+      if (missionIndex !== -1) {
+        const newMissions = [...state.missions]; // Create a copy of the missions array
+        newMissions[missionIndex] = {
+          ...newMissions[missionIndex],
+          reserved: true,
+        };
+        state.missions = [...newMissions];
+      }
+    },
+    leaveMission: (state, action) => {
+      const missionIndex = state.missions.findIndex(
+        (m) => m.mission_id === action.payload.mission_id,
+      );
+      if (missionIndex !== -1) {
+        const newMissions = [...state.missions]; // Create a copy of the missions array
+        newMissions[missionIndex] = {
+          ...newMissions[missionIndex],
+          reserved: false,
+        };
+        state.missions = [...newMissions];
+      }
+    },
+  },
   extraReducers: (builder) => {
     // Add reducers for additional action types here, and handle loading state as needed
     builder.addCase(fetchMissions.pending, (state) => {
@@ -46,10 +57,11 @@ export const missionsSlice = createSlice({
     }).addCase(fetchMissions.fulfilled, (state, action) => {
       state.status = 'succeeded';
       if (action.payload !== '') {
-        const missions = action.payload;
-        // action.payload.forEach((x) => {
-        //   missions.push({ item_id: x, ...action.payload[x][0] });
-        // });
+        const missions = [];
+        action.payload.forEach((x) => {
+          x.reserved = false;
+          missions.push(x);
+        });
         state.missions = missions;
         if (state.missions.length === 0) state.error = 'No result was found!';
       } else {
@@ -59,41 +71,11 @@ export const missionsSlice = createSlice({
       state.status = 'failed';
       state.error = action.error.message;
     });
-    builder.addCase(addMission.pending, (state) => {
-      state.status = 'loading';
-    }).addCase(addMission.fulfilled, (state, action) => {
-      if (action.payload !== null) {
-        state.status = 'succeeded';
-        state.error = '';
-        state.missions.push(action.payload);
-      } else {
-        state.status = 'failed';
-        state.error = 'Unable to add record!';
-      }
-    }).addCase(addMission.rejected, (state, action) => {
-      state.status = 'failed';
-      state.error = action.error.message;
-    });
-    builder.addCase(removeMission.pending, (state) => {
-      state.status = 'loading';
-    }).addCase(removeMission.fulfilled, (state, action) => {
-      if (action.payload !== null) {
-        state.status = 'succeeded';
-        state.error = '';
-        state.missions = state.missions.filter((x) => x.item_id !== action.payload.item_id);
-        if (state.missions.length === 0) state.error = 'No result was found!';
-      } else {
-        state.status = 'failed';
-        state.error = 'Unable to remove record!';
-      }
-    }).addCase(removeMission.rejected, (state, action) => {
-      state.status = 'failed';
-      state.error = action.error.message;
-    });
   },
 });
 
 // Action creators are generated for each case reducer function
-export { addMission, fetchMissions, removeMission };
+export const { joinMission, leaveMission } = missionsSlice.actions;
+export { fetchMissions };
 
 export default missionsSlice.reducer;

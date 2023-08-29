@@ -27,33 +27,8 @@
   border: 1px solid #14b1e0;
 }
 
-.join, .leave {
-  padding: 0.3em 0.5em;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.join {
-  border-color: #949495;
-  color: #949495;
-  background-color: unset;
-}
-
-.leave {
-  border-color: #f14d1b;
-  color: #f14d1b;
-  background-color: unset;
-}
-
-.action-buttons {
-  margin-top: 1.313rem;
-}
-
 .mission-status {
   display: ruby;
-}
-
-.mission-not-reserved, .mission-reserved {
   color: #fff;
   padding: 0.1em 0.5em;
   border-radius: 10px;
