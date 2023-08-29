@@ -1,3 +1,11 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
 body {
   margin: 0;
   font-family:
@@ -24,4 +32,109 @@ code {
     Consolas,
     'Courier New',
     monospace;
+}
+
+.navbar__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  height: 4rem;
+  background-color: #fff;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.navbar__logo {
+  font-size: 0.5rem;
+  font-weight: 400;
+  color: #000;
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.navbar__logo img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.navbar__links {
+  display: none;
+}
+
+.navbar__links.active {
+  display: flex;
+}
+
+.navbar__links ul {
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar__links.active ul {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 4rem;
+  right: 1rem;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.link {
+  color: #0290ff;
+}
+
+.menu {
+  font-size: 1.5rem;
+}
+
+.menu.closed {
+  display: none;
+}
+
+.close.active {
+  display: flex;
+}
+
+.close {
+  font-size: 1.5rem;
+  display: none;
+}
+
+.navbar__links_mob {
+  position: absolute;
+}
+
+@media screen and (min-width: 600px) {
+  .navbar__logo {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #000;
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+  }
+
+  .navbar__logo img {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .navbar__links {
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .navbar__header {
+    padding: 0 2rem;
+  }
 }
