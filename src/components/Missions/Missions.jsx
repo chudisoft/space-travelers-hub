@@ -10,8 +10,6 @@ function Missions() {
   const dispatch = useDispatch();
   const error = useSelector((state) => state.missions.error);
   const missionsAvailable = useSelector((state) => state.missions.missions);
-  // get rockets data from the store
-  const rockets = useSelector(state => state.rockets);
 
   useEffect(() => {
     dispatch(fetchMissions());

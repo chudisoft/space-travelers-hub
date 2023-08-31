@@ -9,7 +9,7 @@ function Profile() {
   const error = useSelector((state) => state.missions.error);
   const missions = useSelector((state) => state.missions.missions);
   // get rockets data from the store
-  const rockets = useSelector(state => state.rockets);
+  // const rockets = useSelector(state => state.rockets);
 
   return (
     <div className='w-100 p-4'>
@@ -27,11 +27,11 @@ function Profile() {
         <div className='profile-col'>
           <h3>My Rockets</h3>
           <div className='profiles'>
-            {
+            {/* {
               rockets.filter((x) => x.reserved === true).map((b) => 
                 <div className='profile'>{b.rocket_name}</div>
               )
-            }
+            } */}
           </div>
         </div>
       </div>

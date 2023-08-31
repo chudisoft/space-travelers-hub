@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import axios from 'axios';
+// import axios from 'axios';
 
 const baseApiUrl = 'https://api.spacexdata.com/v3/missions';
 
@@ -8,8 +8,16 @@ const baseApiUrl = 'https://api.spacexdata.com/v3/missions';
 const fetchMissions = createAsyncThunk(
   'missions/fetchMissions',
   async () => {
-    const response = await axios.get(`${baseApiUrl}`);
-    return response.data;
+    try {
+      // const response = await axios.get(`${baseApiUrl}`);
+      // return response.data;
+
+      const response = await fetch(baseApiUrl);
+      const listData = await response.json();
+      return listData;
+    } catch (error) {
+      return [...error.message];
+    }
   },
 );
 
@@ -23,6 +31,13 @@ export const missionsSlice = createSlice({
   name: 'missions',
   initialState,
   reducers: {
+    setMissions: (state, action) => {
+      state.missions = action.payload;
+      state.error = null;
+    },
+    setError: (state, action) => {
+      state.error = action.payload;
+    },
     joinMission: (state, action) => {
       const missionIndex = state.missions.findIndex(
         (m) => m.mission_id === action.payload.mission_id,
@@ -75,7 +90,12 @@ export const missionsSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { joinMission, leaveMission } = missionsSlice.actions;
+export const {
+  joinMission,
+  leaveMission,
+  setError,
+  setMissions,
+} = missionsSlice.actions;
 export { fetchMissions };
 
 export default missionsSlice.reducer;
