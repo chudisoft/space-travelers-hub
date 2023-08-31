@@ -1,12 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit";
-import rocketReducer, {
-  getRockets,
-  reserveRocket,
-  cancelRocket,
-} from "./rocketSlice";
+import { configureStore } from '@reduxjs/toolkit';
+import rocketReducer, { getRockets } from './rocketSlice';
 
-describe("rocketSlice", () => {
-  it("should handle initial state", () => {
+describe('rocketSlice', () => {
+  it('should handle initial state', () => {
     const store = configureStore({
       reducer: { rocket: rocketReducer },
     });
@@ -14,7 +10,7 @@ describe("rocketSlice", () => {
     expect(store.getState().rocket).toEqual([]);
   });
 
-   it("should fetch rockets and update state", async () => {
+  it('should fetch rockets and update state', async () => {
     const store = configureStore({
       reducer: { rocket: rocketReducer },
     });
@@ -23,6 +19,6 @@ describe("rocketSlice", () => {
 
     const rocketState = store.getState().rocket;
     expect(rocketState.length).toBeGreaterThan(0);
-    expect(rocketState[0]).toHaveProperty("reserved", false);
+    expect(rocketState[0]).toHaveProperty('reserved', false);
   });
 });
