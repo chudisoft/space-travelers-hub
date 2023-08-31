@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const Mission = ({ mission, join, leave }) => {
   Mission.propTypes = {
-    mission: PropTypes.array.isRequired,
+    mission: PropTypes.object.isRequired,
     join: PropTypes.func.isRequired,
     leave: PropTypes.func.isRequired,
   };

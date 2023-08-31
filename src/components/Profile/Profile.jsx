@@ -19,7 +19,7 @@ function Profile() {
           <div className='profiles'>
             {
               missions.filter((x) => x.reserved === true).map((b) => 
-                <div className='profile'>{b.mission_name}</div>
+                <div className='profile' key={b.mission_name}>{b.mission_name}</div>
               )
             }
           </div>
@@ -29,7 +29,7 @@ function Profile() {
           <div className='profiles'>
             {/* {
               rockets.filter((x) => x.reserved === true).map((b) => 
-                <div className='profile'>{b.rocket_name}</div>
+                <div className='profile' key={b.rocket_name}>{b.rocket_name}</div>
               )
             } */}
           </div>

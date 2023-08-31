@@ -32,7 +32,7 @@ export const missionsSlice = createSlice({
   initialState,
   reducers: {
     setMissions: (state, action) => {
-      state.missions = action.payload;
+      state.missions = [...action.payload];
       state.error = null;
     },
     setError: (state, action) => {

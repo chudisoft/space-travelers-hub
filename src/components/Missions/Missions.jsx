@@ -28,6 +28,7 @@ function Missions() {
               mission={b}
               join={join}
               leave={leave}
+              key={b.mission_id}
             />
           )
         }
