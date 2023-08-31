@@ -1,12 +1,16 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
 
 const initialState = [];
 const baseUrl = 'https://api.spacexdata.com/v4/rockets';
 
 export const getRockets = createAsyncThunk('/rocket/getRockets', async () => {
-  const rockets = await axios.get(baseUrl);
-  return rockets.data.map((rocket) => ({ ...rocket, reserved: false }));
+  const response = await fetch(baseUrl);
+  const rocketsData = await response.json();
+  const rocketsWithReserved = rocketsData.map((rocket) => ({
+    ...rocket,
+    reserved: false,
+  }));
+  return rocketsWithReserved;
 });
 
 const rocketSlice = createSlice({

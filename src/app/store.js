@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import rockerReducer from '../features/rockets/rocketSlice';
+import rocketReducer from '../features/rockets/rocketSlice';
 
 const store = configureStore({
-  reducer: {
-    rocket: rockerReducer,
+  reducer: { rocket: rocketReducer },
+  preloadedState: {
+    rocket: [{ id: 1, reserved: true }],
   },
 });
 

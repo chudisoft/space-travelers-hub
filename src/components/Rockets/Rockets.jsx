@@ -50,7 +50,7 @@ const Rockets = () => {
           <div className="rocket__card-img">
             <img
               style={{ width: "300px" }}
-              src={rocket.flickr_images[0]}
+              src={rocket.flickr_images}
               alt="rocket"
             />
           </div>

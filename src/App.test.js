@@ -1,13 +1,13 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
-import App from "./App";
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+import App from './App';
 
-test("renders the Navbar and Outlet components", () => {
+test('renders the Navbar and Outlet components', () => {
   render(
-    <MemoryRouter initialEntries={["/"]}>
+    <MemoryRouter initialEntries={['/']}>
       <App />
-    </MemoryRouter>
+    </MemoryRouter>,
   );
 
   const navbarElement = screen.getByText(/Space Travelers' Hub/i);
