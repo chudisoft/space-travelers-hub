@@ -21,6 +21,32 @@ function Missions() {
   return (
     <div className='w-100 p-4'>
       <div>{error}</div>
+      <table className='mission-table'>
+        <thead>
+          <tr>
+            <th className='mission-name'>Mission</th>
+            <th className='mission-description'>Description</th>
+            <th className='mission-status'>Status</th>
+            <th className='mission-button'></th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            missionsAvailable.map((b) => 
+              <Mission 
+                mission={b}
+                join={join}
+                leave={leave}
+                key={b.mission_id}
+                mobile={false}
+              />
+            )
+          }
+        </tbody>
+      </table>
+      <div className='missions'>
+        <h2>Missions</h2>
+      </div>
       <div className='missions'>
         {
           missionsAvailable.map((b) => 
@@ -29,6 +55,7 @@ function Missions() {
               join={join}
               leave={leave}
               key={b.mission_id}
+              mobile={true}
             />
           )
         }

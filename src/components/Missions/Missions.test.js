@@ -43,20 +43,20 @@ describe('Test missions component', () => {
 
     await waitFor(() => {
       const missionTitles = getAllByText(/Thaicom is the name/);
-      expect(missionTitles.length).toBe(1);
+      expect(missionTitles.length).toBe(2);
     });
   });
 
   test('set reserved to true on button click', async () => {
-    const { getByText } = render(
+    const { getAllByText } = render(
       <Provider store={store}>
         <Missions />
       </Provider>
     );
 
     await waitFor(() => {
-      const joinButton = getByText('Join Mission');
-      fireEvent.click(joinButton);
+      const joinButton = getAllByText('Join Mission');
+      fireEvent.click(joinButton[0]);
       missionsAvailable = store.getState().missions.missions;
       // Assert that the joinMission action is dispatched
       expect(store.getActions()).toContainEqual(joinMission(missionsAvailable[0]));

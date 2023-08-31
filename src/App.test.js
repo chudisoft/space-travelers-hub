@@ -44,7 +44,7 @@ describe('Test missions component', () => {
 
     await waitFor(() => {
       const missionTitles = getAllByText(/Thaicom is the name/);
-      expect(missionTitles.length).toBe(1);
+      expect(missionTitles.length).toBe(2);
     });
   });
 });

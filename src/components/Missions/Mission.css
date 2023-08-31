@@ -5,8 +5,8 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  grid-gap: 0.938rem;
-  gap: 0.938rem;
+  grid-gap: 0;
+  gap: 0;
 }
 
 .mission {
@@ -18,11 +18,13 @@
   justify-content: space-between;
 }
 
-.mission:nth-child(odd) {
+.mission:nth-child(odd),
+.mission-table tr:nth-child(odd) {
   background-color: #f0f0f0;
 }
 
-.mission:hover {
+.mission:hover,
+.mission-table tr:hover {
   background-color: #f3f3f3;
   border: 1px solid #14b1e0;
 }
@@ -47,11 +49,7 @@
 }
 
 .action-buttons {
-  margin-top: 1.313rem;
-}
-
-.mission-status {
-  display: ruby;
+  margin-top: 1em;
 }
 
 .mission-not-reserved,
@@ -69,13 +67,45 @@
   background-color: #3f75c8;
 }
 
+.mission-table {
+  display: none;
+}
+
 @media only screen and (min-width: 768px) {
+  .missions {
+    display: none;
+  }
+
+  .mission-table {
+    display: block;
+    border-collapse: collapse;
+  }
+
+  .mission-table th,
+  .mission-table td {
+    border: 1px solid;
+    padding: 1em 0.5em;
+  }
+
+  .mission-table thead {
+    text-align: left;
+  }
+
   .mission {
     flex-direction: row;
     flex-wrap: unset;
+    padding: 0;
   }
 
-  .mission-description {
-    max-width: 50%;
+  .mission-status {
+    width: 18%;
+  }
+
+  .mission-button {
+    width: 10%;
+  }
+
+  .mission-name {
+    width: 20%;
   }
 }
