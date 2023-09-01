@@ -1,14 +1,13 @@
-import React from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ErrorPage from './routes/error-page';
-import store from './app/store';
-import { Rockets, Missions, Profile } from './components';
-import './index.css';
+import store from './redux/store';
+import { Rockets, Missions, Profile as UserProfile } from './components';
 import { getRockets } from './features/rockets/rocketSlice';
+import './index.css';
 
 const router = createBrowserRouter([
   {
@@ -26,7 +25,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/profile',
-        element: <Profile />,
+        element: <UserProfile />,
       },
     ],
   },
