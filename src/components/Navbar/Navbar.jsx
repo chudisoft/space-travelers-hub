@@ -36,7 +36,6 @@ const Navbar = () => {
         <ul>
           {links.map((link, idx) => (
             <div key={link.name} style={{display: 'flex', gap: '0.5rem'}}>
-              {link.name === "My Profile" && <hr />}
               <NavLink
                 onClick={handleClicked}
                 key={link.name}

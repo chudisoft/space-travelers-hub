@@ -9,12 +9,20 @@ const fetchMissions = createAsyncThunk(
   'missions/fetchMissions',
   async () => {
     try {
-      // const response = await axios.get(`${baseApiUrl}`);
-      // return response.data;
+      // Retrieve state from localStorage
+      const savedState = JSON.parse(localStorage.getItem('missions'));
+      if (savedState === null) {
+        const response = await fetch(baseApiUrl);
+        const result = await response.json();
 
-      const response = await fetch(baseApiUrl);
-      const listData = await response.json();
-      return listData;
+        const missions = [];
+        result.forEach((x) => {
+          x.reserved = false;
+          missions.push(x);
+        });
+        return missions;
+      }
+      return savedState;
     } catch (error) {
       return [...error.message];
     }
@@ -49,6 +57,8 @@ export const missionsSlice = createSlice({
           reserved: true,
         };
         state.missions = [...newMissions];
+        // Save state to localStorage
+        localStorage.setItem('missions', JSON.stringify(state.missions));
       }
     },
     leaveMission: (state, action) => {
@@ -62,6 +72,8 @@ export const missionsSlice = createSlice({
           reserved: false,
         };
         state.missions = [...newMissions];
+        // Save state to localStorage
+        localStorage.setItem('missions', JSON.stringify(state.missions));
       }
     },
   },
@@ -72,12 +84,7 @@ export const missionsSlice = createSlice({
     }).addCase(fetchMissions.fulfilled, (state, action) => {
       state.status = 'succeeded';
       if (action.payload !== '') {
-        const missions = [];
-        action.payload.forEach((x) => {
-          x.reserved = false;
-          missions.push(x);
-        });
-        state.missions = missions;
+        state.missions = action.payload;
         if (state.missions.length === 0) state.error = 'No result was found!';
       } else {
         state.error = 'No result was found!';

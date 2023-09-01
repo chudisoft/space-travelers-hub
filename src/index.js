@@ -5,8 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ErrorPage from './routes/error-page';
 import store from './redux/store';
-import { Rockets, Missions, Profile as UserProfile } from './components';
-import { getRockets } from './features/rockets/rocketSlice';
+import { Rockets, Missions, Profile } from './components';
 import './index.css';
 
 const router = createBrowserRouter([
@@ -25,13 +24,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/profile',
-        element: <UserProfile />,
+        element: <Profile />,
       },
     ],
   },
 ]);
-
-store.dispatch(getRockets());
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>

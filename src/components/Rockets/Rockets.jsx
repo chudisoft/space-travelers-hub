@@ -4,44 +4,24 @@ import {
   rockets,
   reserveRocket,
   cancelRocket,
-} from "../../features/rockets/rocketSlice";
+  getRockets,
+} from "../../redux/rockets/rocketSlice";
 
 const Rockets = () => {
   const dispatch = useDispatch();
-  const data = useSelector(rockets);
-
-  const getLocalStorageReservations = () => {
-    const localStorageReservations =
-      JSON.parse(localStorage.getItem("rocketReservations")) || {};
-    return localStorageReservations;
-  };
-
-  const setLocalStorageReservations = (reservations) => {
-    localStorage.setItem("rocketReservations", JSON.stringify(reservations));
-  };
+  const data = useSelector((state) => state.rockets.rockets);
 
   const handleClick = (isReserved, rocketId, rocketName) => {
-    const localStorageReservations = getLocalStorageReservations();
-
     if (!isReserved) {
       dispatch(reserveRocket(rocketId));
-      localStorageReservations[rocketId] = true;
     } else {
       dispatch(cancelRocket(rocketId));
-      localStorageReservations[rocketId] = false;
     }
-
-    setLocalStorageReservations(localStorageReservations);
   };
 
   useEffect(() => {
-    const localStorageReservations = getLocalStorageReservations();
-    data.forEach((rocket) => {
-      if (localStorageReservations[rocket.id]) {
-        dispatch(reserveRocket(rocket.id));
-      }
-    });
-  }, [data, dispatch]);
+    dispatch(getRockets());
+  }, []);
 
   return (
     <div className="rockets__cont">

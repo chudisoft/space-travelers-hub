@@ -5,12 +5,9 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Outlet />
-      {/* <Missions />
-      <Profile /> */}
-      {/* <div id="root" className="row">
+      <div className="container">
         <Outlet />
-      </div> */}
+      </div>
     </div>
   );
 }

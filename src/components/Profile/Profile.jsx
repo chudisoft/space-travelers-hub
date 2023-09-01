@@ -1,15 +1,23 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { rockets } from "../../features/rockets/rocketSlice";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import "./Profile.css";
+import { getRockets } from "../../redux/rockets/rocketSlice";
+import { fetchMissions } from "../../redux/mission/missionsSlice";
 
 const Profile = () => {
-  const data = useSelector(rockets);
+  const rockets = useSelector((state) => state.rockets.rockets);
   const missions = useSelector((state) => state.missions.missions);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getRockets());
+    dispatch(fetchMissions());
+  }, [])
+  
 
   return (
     <div className="profile__cont">
-      <div>
+      <div className="profile-col">
         <h2>My Missions</h2>
         <div className="profiles">
           {missions
@@ -21,15 +29,17 @@ const Profile = () => {
             ))}
         </div>
       </div>
-      <div className="my-rockets">
+      <div className="profile-col">
         <h2>My Rockets</h2>
-        <ul>
-          {data
-            .filter((rocket) => rocket.reserved)
-            .map((rocket) => (
-              <li key={rocket.id}>{rocket.name}</li>
+        <div className="profiles">
+          {rockets
+            .filter((x) => x.reserved === true)
+            .map((b) => (
+              <div className="profile" key={b.name}>
+                {b.name}
+              </div>
             ))}
-        </ul>
+        </div>
       </div>
     </div>
   );

@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { v4 as uuidv4 } from 'uuid';
-import PropTypes from 'prop-types'
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import Mission from './Mission';
 import { fetchMissions, joinMission, leaveMission } from '../../redux/mission/missionsSlice';
 import { useDispatch, useSelector } from 'react-redux';

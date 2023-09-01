@@ -34,6 +34,10 @@ code {
     monospace;
 }
 
+.container {
+  padding: 2em 1em;
+}
+
 .navbar__header {
   display: flex;
   justify-content: space-between;
@@ -88,6 +92,8 @@ code {
   border: 1px solid #ccc;
   border-radius: 10px;
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  background-color: #fff;
 }
 
 .link {
