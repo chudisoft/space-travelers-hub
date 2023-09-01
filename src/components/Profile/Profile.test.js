@@ -9,7 +9,7 @@ import { setRockets } from '../../redux/rockets/rocketSlice';
 
 const mockStore = configureStore([thunk]);
 
-describe('Test missions component', () => {
+describe('Test profile component', () => {
   const mockMissionsData = [
     {
       mission_name: "Thaicom",
@@ -57,7 +57,7 @@ describe('Test missions component', () => {
   store.dispatch(setMissions(mockMissionsData));
   store.dispatch(setRockets(mockRocketsData));
 
-  test('renders missions after fetching data', async () => {
+  test('renders profile data', async () => {
     const { getAllByText } = render(
       <Provider store={store}>
         <Profile />
