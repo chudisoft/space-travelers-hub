@@ -1,16 +1,13 @@
-import React from 'react';
-import './index.css';
 import * as ReactDOM from 'react-dom/client';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ErrorPage from './routes/error-page';
-import Home from './components/Home/Home';
 import store from './redux/store';
+import { Rockets, Missions, Profile as UserProfile } from './components';
+import { getRockets } from './features/rockets/rocketSlice';
+import './index.css';
 
 const router = createBrowserRouter([
   {
@@ -20,18 +17,26 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home />,
+        element: <Rockets />,
+      },
+      {
+        path: '/missions',
+        element: <Missions />,
+      },
+      {
+        path: '/profile',
+        element: <UserProfile />,
       },
     ],
   },
 ]);
 
+store.dispatch(getRockets());
+
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>,
 );
 
 // If you want to start measuring performance in your app, pass a function

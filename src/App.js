@@ -1,16 +1,16 @@
 import { Outlet } from 'react-router-dom';
-import './App.css';
-import Missions from './components/Missions/Missions';
-import Profile from './components/Profile/Profile';
+import { Navbar } from './components';
 
 function App() {
   return (
     <div className="App">
-      <div id="root" className="row">
+      <Navbar />
+      <Outlet />
+      {/* <Missions />
+      <Profile /> */}
+      {/* <div id="root" className="row">
         <Outlet />
-        <Missions />
-        <Profile />
-      </div>
+      </div> */}
     </div>
   );
 }
