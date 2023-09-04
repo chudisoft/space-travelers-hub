@@ -154,6 +154,12 @@ your server.
 - Twitter: [@twitterhandle](https://twitter.com/chrisuduekwe)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/christopher-uduekwe)
 
+👤 **Evans Karanja**
+
+- GitHub: [@githubhandle](https://github.com/prg-04)
+- Twitter: [@twitterhandle](https://twitter.com/Evans1425Sean)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/evanson-karanja-3549841b8/)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
