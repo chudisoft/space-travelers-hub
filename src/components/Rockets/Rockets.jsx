@@ -18,8 +18,8 @@ const Rockets = () => {
       dispatch(cancelRocket(rocketId));
     }
   };
-
   useEffect(() => {
+    document.title = "Rockets"
     dispatch(getRockets());
   }, []);
 

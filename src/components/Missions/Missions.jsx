@@ -9,8 +9,8 @@ function Missions() {
   const dispatch = useDispatch();
   const error = useSelector((state) => state.missions.error);
   const missionsAvailable = useSelector((state) => state.missions.missions);
-
   useEffect(() => {
+    document.title = "Missions"
     dispatch(fetchMissions());
   }, []);
 

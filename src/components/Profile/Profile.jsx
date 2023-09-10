@@ -10,6 +10,7 @@ const Profile = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    document.title = "Profile"
     dispatch(getRockets());
     dispatch(fetchMissions());
   }, [])
