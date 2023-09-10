@@ -82,8 +82,8 @@ It also allows the student to showcase what they can do to the future employee.
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-<!-- > This Project is deployed at [render.com](https://space-travelers-hub-3c90.onrender.com) -->
-> This Project is yet to be deployed.
+> This Project is deployed at [Netlify](https://illustrious-dolphin-cb41ce.netlify.app/)
+<!-- > This Project is yet to be deployed. -->
 
 <!-- - [Live Demo Link](https://google.com) -->
 
