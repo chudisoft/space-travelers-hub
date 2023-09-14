@@ -50,7 +50,7 @@ footer {
 
 .top-bg {
   background-color: #1de8cb36;
-  min-height: 40vh;
+  min-height: 20vh;
   width: 100%;
   position: fixed;
   z-index: -1;

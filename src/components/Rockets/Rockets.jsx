@@ -29,7 +29,6 @@ const Rockets = () => {
         <div key={rocket.id} className="rocket__card">
           <div className="rocket__card-img">
             <img
-              style={{ width: "300px" }}
               src={rocket.flickr_images}
               alt="rocket"
             />
